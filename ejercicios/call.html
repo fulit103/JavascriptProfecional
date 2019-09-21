@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <button class="b-alert">boton 1</button>
+        <button class="b-alert">boton 2</button>
+        <button class="b-alert">boton 3</button>
+    </div>
+    <script>
+        let botones = document.getElementsByClassName("b-alert")
+
+        // botones.forEach( button =>{
+        //     button.onclick = () => alert("nunca pares de aprender")
+        // })
+
+        Array.prototype.forEach.call( botones, b=>{
+            b.onclick = () => alert("nunca pares de aprender")
+        })
+
+    
+        function saludar(){
+            console.log(`hola. soy ${this.name} ${this.apellido}`)        
+        }
+
+        const richard = {
+            name : "Richard",
+            apellido : "Toro"
+        }
+
+        saludar.call(richard)
+
+        function caminar(metros, direccion){
+            console.log(`${this.name} camina ${metros} metros hacia ${direccion}` )
+        }
+
+        caminar.call(richard, 400, "norte")
+
+        caminar.apply(richard, [800, "sur"])
+
+        const call = caminar.bind(richard, 600)
+
+        call("nor oeste")
+
+    </script>
+</body>
+</html>
